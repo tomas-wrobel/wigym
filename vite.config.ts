@@ -24,7 +24,18 @@ export default defineConfig({
 					}
 				],
 				"display": "standalone",
-				"start_url": "/"
+				"start_url": "/",
+				"description": "Wigym App je aplikace pro studenty Wichterlova gymnázia",
+				"shortcuts": [
+					{
+						"name": "Rozvrh",
+						"url": "/timetable",
+					},
+					{
+						"name": "Známky",
+						"url": "/marks",
+					}
+				]
 			}
 		})
 	]

@@ -39,7 +39,13 @@ export async function load() {
     const username = localStorage.getItem("username");
     const password = localStorage.getItem("password");
     if (username && password) {
-        await login(username, password);
+        try {
+            await login(username, password);
+        } catch (e) {
+            console.error(e);
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+        }
     }
 }
 
@@ -57,7 +63,7 @@ export function useLoggedIn() {
         const listener = () => setLoggedIn(!!token);
         target.addEventListener('token-changed', listener);
         return () => target.removeEventListener('token-changed', listener);
-    });
+    }, []);
 
     return loggedIn;
 }

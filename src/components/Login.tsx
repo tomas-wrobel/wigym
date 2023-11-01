@@ -3,7 +3,7 @@ import {IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonInpu
 import {Auth} from "../api";
 import {Redirect} from "react-router";
 
-const Login: FunctionComponent<{redirect: string}> = ({redirect}) => {
+const Login: FunctionComponent<{redirect: string;}> = ({redirect}) => {
     const [errorAlert] = useIonAlert();
     const isLoggedIn = Auth.useLoggedIn();
 
@@ -27,21 +27,19 @@ const Login: FunctionComponent<{redirect: string}> = ({redirect}) => {
         }}>
             <IonCard>
                 <IonCardHeader>
-                    <IonCardTitle>Login</IonCardTitle>
+                    <IonCardTitle>Přihlásit se přes Bakaláře</IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent>
                     <IonList>
                         <IonItem>
-                            <IonLabel position="floating">Uživatelské jméno</IonLabel>
-                            <IonInput aria-label="Uživatelské jméno" type="text" name="username" />
+                            <IonInput label="Uživatelské jméno" labelPlacement="floating" type="text" name="username" />
                         </IonItem>
                         <IonItem>
-                            <IonLabel position="floating">Heslo</IonLabel>
-                            <IonInput aria-label="Heslo" type="password" name="password" />
+                            <IonInput label="Heslo" labelPlacement="floating" type="password" name="password" />
                         </IonItem>
-                        <IonButton type="submit">Přihlásit se přes Bakaláře</IonButton>
                     </IonList>
                 </IonCardContent>
+                <IonButton type="submit" fill="clear">Potvrdit</IonButton>
             </IonCard>
         </form>
     );

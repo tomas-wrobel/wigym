@@ -1,4 +1,3 @@
-import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import {VitePWA} from "vite-plugin-pwa";
 import {defineConfig} from 'vite';
@@ -7,7 +6,6 @@ import {defineConfig} from 'vite';
 export default defineConfig({
 	plugins: [
 		react(),
-		legacy(),
 		VitePWA({
 			"registerType": "autoUpdate",
 			"manifest": {
@@ -25,8 +23,6 @@ export default defineConfig({
 						"type": "image/png"
 					}
 				],
-				"theme_color": "#ffffff",
-				"background_color": "#ffffff",
 				"display": "standalone",
 				"start_url": "/"
 			}

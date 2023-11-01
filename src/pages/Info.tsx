@@ -35,32 +35,6 @@ const Info: FunctionComponent = () => {
                 </IonHeader>
                 <IonCard>
                     <IonCardHeader>
-                        <IonCardTitle>O aplikaci</IonCardTitle>
-                    </IonCardHeader>
-                    <IonCardContent>
-                        <p>
-                            Vítejte ve Wigym Aapp, aplikaci pro studenty Wichterlova gymnázia. Tato aplikace je vyvíjena Tomášem Wróblem a měla by sjednotit všechny služby, které jsou pro studenty důležité.
-                        </p>
-                        <p>
-                            Tak například zde najdete přehled svých známek, rozvrh, aktuality a další.
-                        </p>
-                    </IonCardContent>
-                </IonCard>
-                <IonCard>
-                    <IonCardHeader>
-                        <IonCardTitle>Google Play? App Store?</IonCardTitle>
-                    </IonCardHeader>
-                    <IonCardContent>
-                        <p>
-                            Wigym App je vyvíjena jako webová aplikace, která se dá nainstalovat na domovskou obrazovku. Tím pádem je dostupná na všech zařízeních, která mají přístup k internetu.
-                        </p>
-                        <p>
-                            Zatím totiž nemám licence na vývoj pro Google Play ani App Store. Navíc nemám souhlas od Wichterlova gymnázia, takže bych nemohl aplikaci publikovat.
-                        </p>
-                    </IonCardContent>
-                </IonCard>
-                <IonCard>
-                    <IonCardHeader>
                         <IonCardTitle>Informace o uživateli</IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
@@ -70,6 +44,29 @@ const Info: FunctionComponent = () => {
                         ? <IonButton href="/login" fill="clear">Přihlásit se</IonButton>
                         : <IonButton fill="clear" onClick={Auth.signOut}>Odhlásit se</IonButton>
                     }
+                </IonCard>
+                <IonCard>
+                    <IonCardHeader>
+                        <IonCardTitle>Google Play?</IonCardTitle>
+                    </IonCardHeader>
+                    <IonCardContent>
+                        <p>
+                            Wigym App je vyvíjena jako webová aplikace, která se dá nainstalovat na domovskou obrazovku. Tím pádem je dostupná na všech zařízeních, která mají přístup k internetu.
+                        </p>
+                    </IonCardContent>
+                </IonCard>
+                <IonCard>
+                    <IonCardHeader>
+                        <IonCardTitle>Zdrojový kód</IonCardTitle>
+                    </IonCardHeader>
+                    <IonCardContent>
+                        <p>
+                            Zdrojový kód aplikace je k dispozici na <a href="https://github.com/tomas-wrobel/wigym">GitHubu</a>.
+                        </p>
+                        <p>
+                            Ať už chcete přispět k vývoji, nebo vyvíjet vlastní aplikaci, pamatujte, že je třeba dodržovat licenci. Více informací najdete v souboru <code>LICENSE</code>.
+                        </p>
+                    </IonCardContent>
                 </IonCard>
             </IonContent>
         </IonPage>

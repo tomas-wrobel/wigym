@@ -1,0 +1,41 @@
+{
+	"name": "wigym-app",
+	"displayName": "Wigym App",
+	"private": true,
+	"version": "0.0.7",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"lint": "eslint"
+	},
+	"author": {
+		"email": "tomas.wrobel@email.cz",
+		"name": "Tomáš Wróbel",
+		"url": "https://tomaswrobel.dev"
+	},
+	"dependencies": {
+		"@ionic/react": "^7.0.0",
+		"@ionic/react-router": "^7.0.0",
+		"@types/react-router": "^5.1.20",
+		"@types/react-router-dom": "^5.3.3",
+		"ionicons": "^7.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router": "^5.3.4",
+		"react-router-dom": "^5.3.4"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.27",
+		"@types/react-dom": "^18.0.10",
+		"@vitejs/plugin-legacy": "^4.0.2",
+		"@vitejs/plugin-react": "^4.0.1",
+		"eslint": "^8.35.0",
+		"eslint-plugin-react": "^7.32.2",
+		"typescript": "^5.1.6",
+		"vite": "^4.3.9",
+		"vite-plugin-pwa": "^0.16.6"
+	},
+	"description": "Wigym App je aplikace pro studenty Wichterlova gymnázia"
+}

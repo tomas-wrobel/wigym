@@ -13,12 +13,22 @@ type Timetable = {
         Atoms: {
             HourId: number;
             SubjectId: number;
+            RoomId: string;
+            Change: {
+                Description: string;
+            };
         }[];
         Date: string;
+        DayType: string;
+        DayDescription: string;
     }[];
     Subjects: {
         Id: number;
         Name: string;
+        Abbrev: string;
+    }[];
+    Rooms: {
+        Id: string;
         Abbrev: string;
     }[];
 };
@@ -65,24 +75,43 @@ const Timetable: FunctionComponent<{permanent: boolean;}> = ({permanent}) => {
                     </IonCardContent>
                 </IonCard>
             )}
-            {timetable.Days.map(({Atoms, Date: date}, i) => (
+            {timetable.Days.map(({Atoms, Date: date, DayType, DayDescription = "Volno"}, i) => (
                 <IonCard key={i}>
                     <IonCardHeader>
                         <IonCardTitle>{new Date(date).toLocaleDateString("cs-CZ", {
-                            weekday: "long", 
-                            day: permanent ? undefined : "numeric", 
+                            weekday: "long",
+                            day: permanent ? undefined : "numeric",
                             month: permanent ? undefined : "long"
                         })}</IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
-                        <IonList>
-                            {Atoms.map(({HourId, SubjectId}, j) => (
-                                <IonItem key={i + j}>
-                                    <IonLabel>{timetable.Subjects.find(({Id}) => Id === SubjectId)?.Name || "Volná hodina"}</IonLabel>
-                                    <IonLabel style={{textAlign: "right"}}>{timetable.Hours.find(({Id}) => Id === HourId)?.Caption}</IonLabel>
-                                </IonItem>
-                            ))}
-                        </IonList>
+                        <IonLabel color="danger">
+                            {DayType === "Holiday" || DayType == "Celebration" && DayDescription}
+                            {DayType === "Weekend" && "Víkend"}
+                            {DayType === "DirectorDay" && "Ředitelské volno"}
+                        </IonLabel>
+                        {Atoms.length !== 0 && (
+                            <IonList>
+                                {Atoms.map(({HourId, SubjectId, Change}, j) => {
+                                    const hour = timetable.Hours.find(({Id}) => Id === HourId)!;
+
+                                    return (
+                                        <IonItem key={i + j}>
+                                            <IonLabel>
+                                                <h2>{timetable.Subjects.find(({Id}) => Id === SubjectId)?.Name || "Neučí se"}</h2>
+                                                <p>{hour.BeginTime}&ndash;{hour.EndTime}</p>
+                                                {Change && (
+                                                    <IonLabel color="danger">{Change.Description}</IonLabel>
+                                                )}
+                                            </IonLabel>
+                                            <IonLabel style={{position: "absolute", right: "1em"}}>
+                                                <small>{timetable.Rooms.find(({Id}) => Id === timetable.Days[i].Atoms[j].RoomId)?.Abbrev}</small>
+                                            </IonLabel>
+                                        </IonItem>
+                                    );
+                                })}
+                            </IonList>
+                        )}
                     </IonCardContent>
                 </IonCard>
             ))}

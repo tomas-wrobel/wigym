@@ -35,8 +35,13 @@ const Marks: FunctionComponent = () => {
                         <IonList>
                             {Marks.map((mark, i) => (
                                 <IonItem key={i}>
-                                    <IonLabel>{mark.Caption}</IonLabel>
-                                    <IonLabel style={{textAlign: "right"}}>{mark.MarkText} / Váha {mark.Weight}</IonLabel>
+                                    <IonLabel>
+                                        <h2>{mark.Caption}</h2>
+                                        <p>Váha: {mark.Weight}</p>
+                                    </IonLabel>
+                                    <IonLabel style={{position: "absolute", right: "1em"}}>
+                                        {mark.MarkText}
+                                    </IonLabel>
                                 </IonItem>
                             ))}
                         </IonList>
